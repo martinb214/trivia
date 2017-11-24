@@ -1,4 +1,7 @@
-﻿#include "Game.h"
+﻿#include <iostream>
+#include <ctime>
+
+#include "Game.h"
 
 using namespace std;
 
@@ -13,6 +16,7 @@ Game::Game(){
 		sportsQuestions.push_back("Sports Question " + j);
 		rockQuestions.push_back("Rock Question " + j);
 	}
+	srand(time(NULL));
 }
 
 void Game::add(string playerName){
@@ -55,7 +59,10 @@ void Game::playGame(){
 			currentPlayer++;
 			if (currentPlayer == players.size()) currentPlayer = 0;
 		}
-		cout << players[currentPlayer-1].getName() << " has won the game" << endl;
+		if(currentPlayer != 0)
+			cout << players[currentPlayer-1].getName() << " has won the game" << endl;
+		else
+			cout << players[players.size()-1].getName() << " has won the game" << endl;
 	}else{
 		cout << "Not enough player to start the game!" << endl;
 	}
