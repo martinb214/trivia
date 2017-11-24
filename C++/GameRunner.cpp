@@ -3,27 +3,20 @@
 
 static bool notAWinner;
 
-int main()
-{
+int main(){
 	Game aGame;
 
 	aGame.add("Chet");
 	aGame.add("Pat");
 	aGame.add("Sue");
 
-	do
-	{
-
+	do{
 		aGame.roll(rand() % 5 + 1);
 
-		if (rand() % 9 == 7)
-		{
+		if (rand() % 9 == 7){
 			notAWinner = aGame.wrongAnswer();
-		}
-		else
-		{
+		}else{
 			notAWinner = aGame.wasCorrectlyAnswered();
 		}
 	} while (notAWinner);
-
 }
