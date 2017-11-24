@@ -1,7 +1,4 @@
-﻿#include <stdlib.h>
-#include "Game.h"
-
-static bool notAWinner;
+﻿#include "Game.h"
 
 int main(){
 	Game aGame;
@@ -10,13 +7,7 @@ int main(){
 	aGame.add("Pat");
 	aGame.add("Sue");
 
-	do{
-		aGame.roll(rand() % 5 + 1);
-
-		if (rand() % 9 == 7){
-			notAWinner = aGame.wrongAnswer();
-		}else{
-			notAWinner = aGame.wasCorrectlyAnswered();
-		}
-	} while (notAWinner);
+	aGame.playGame();
+	
+	return 0;
 }

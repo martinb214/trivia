@@ -2,6 +2,7 @@
 #define GAME_H_
 
 #include <iostream>
+#include <stdlib.h>
 #include <list>
 #include <vector>
 
@@ -19,25 +20,27 @@ class Player{
 		const int& getPurse() {return purse; };
 		const bool& getInPenaltyBox() {return inPenaltyBox; };
 
-		void setPlace(int newPlace) {place = newPlace; };
+		void setPlace(int newPlace) {place = newPlace; if(place > 11) place -= 12; };
 		void setPurse() {purse++; };
 		void setInPenaltyBox(){
 			if(inPenaltyBox) inPenaltyBox = false;
 			else inPenaltyBox = true; 
 		};
+
+		int roll() { return (rand() % 5 + 1); };
+		int answer() {return (rand() % 9); };
 };
 
 class Game{
   private:
 	std::vector<Player> players;
 	int currentPlayer;
+	bool hasWinner;
 
 	std::list<std::string> popQuestions;
 	std::list<std::string> scienceQuestions;
 	std::list<std::string> sportsQuestions;
 	std::list<std::string> rockQuestions;
-
-	bool isGettingOutOfPenaltyBox;
 
 	void askQuestion();
 	std::string currentCategory();
@@ -45,15 +48,14 @@ class Game{
 
   public:
 	Game();
+
+	void playGame();	
+	
 	std::string createRockQuestion(int index);
 	bool isPlayable();
 	bool add(std::string playerName);
 
 	int howManyPlayers();
-	void roll(int roll);
-
-	bool wasCorrectlyAnswered();
-	bool wrongAnswer();
 };
 
 #endif /* GAME_H_ */
