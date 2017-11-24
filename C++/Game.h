@@ -52,11 +52,10 @@ class Game{
   public:
 	Game();
 
-	void playGame();	
+	void add(std::string playerName);
+	void playGame();
 	
-	std::string createRockQuestion(int index);
 	bool isPlayable();
-	bool add(std::string playerName);
 
 	int howManyPlayers();
 };
