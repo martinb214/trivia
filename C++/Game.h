@@ -54,10 +54,6 @@ class Game{
 
 	void add(std::string playerName);
 	void playGame();
-	
-	bool isPlayable();
-
-	int howManyPlayers();
 };
 
 #endif /* GAME_H_ */

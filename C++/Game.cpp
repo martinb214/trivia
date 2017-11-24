@@ -23,7 +23,7 @@ void Game::add(string playerName){
 }
 
 void Game::playGame(){
-	if(isPlayable()){
+	if(players.size() >= 2){
 		while(!hasWinner){
 			cout << players[currentPlayer].getName() << " is the current player" << endl;
 			int roll = players[currentPlayer].roll();
@@ -47,7 +47,7 @@ void Game::playGame(){
 				}else{
 					cout << "Answer was corrent!" << endl;
 					players[currentPlayer].setPurse();
-					cout << players[currentPlayer].getName() << " now has " << players[currentPlayer].getPurse() << " Gold Coins." << endl;
+					cout << players[currentPlayer].getName() << " now has " << players[currentPlayer].getPurse() << " Gold Coins" << endl;
 					hasWinner = didPlayerWin();
 				}
 			}
@@ -55,17 +55,10 @@ void Game::playGame(){
 			currentPlayer++;
 			if (currentPlayer == players.size()) currentPlayer = 0;
 		}
+		cout << players[currentPlayer-1].getName() << " has won the game" << endl;
 	}else{
 		cout << "Not enough player to start the game!" << endl;
 	}
-}
-
-bool Game::isPlayable(){
-	return (howManyPlayers() >= 2);
-}
-
-int Game::howManyPlayers(){
-	return players.size();
 }
 
 void Game::askQuestion(string place)
