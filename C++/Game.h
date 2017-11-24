@@ -5,34 +5,32 @@
 #include <list>
 #include <vector>
 
-using namespace std;
-
 class Game{
   private:
-	vector<string> players;
+	std::vector<std::string> players;
 
 	int places[6];
 	int purses[6];
 
 	bool inPenaltyBox[6];
 
-	list<string> popQuestions;
-	list<string> scienceQuestions;
-	list<string> sportsQuestions;
-	list<string> rockQuestions;
+	std::list<std::string> popQuestions;
+	std::list<std::string> scienceQuestions;
+	std::list<std::string> sportsQuestions;
+	std::list<std::string> rockQuestions;
 
 	int currentPlayer;
 	bool isGettingOutOfPenaltyBox;
 
 	void askQuestion();
-	string currentCategory();
+	std::string currentCategory();
 	bool didPlayerWin();
 
   public:
 	Game();
-	string createRockQuestion(int index);
+	std::string createRockQuestion(int index);
 	bool isPlayable();
-	bool add(string playerName);
+	bool add(std::string playerName);
 
 	int howManyPlayers();
 	void roll(int roll);
