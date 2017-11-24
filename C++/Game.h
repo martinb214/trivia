@@ -37,13 +37,16 @@ class Game{
 	int currentPlayer;
 	bool hasWinner;
 
+	const std::string gameTable[12] = {"Pop", "Science", "Sports", "Rock",
+									   "Pop", "Science", "Sports", "Rock",
+									   "Pop", "Science", "Sports", "Rock"};
+
 	std::list<std::string> popQuestions;
 	std::list<std::string> scienceQuestions;
 	std::list<std::string> sportsQuestions;
 	std::list<std::string> rockQuestions;
 
-	void askQuestion();
-	std::string currentCategory();
+	void askQuestion(std::string place);
 	bool didPlayerWin();
 
   public:

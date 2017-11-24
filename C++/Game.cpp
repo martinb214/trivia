@@ -48,8 +48,8 @@ void Game::playGame(){
 				}
 				players[currentPlayer].setPlace(players[currentPlayer].getPlace() + roll);
 				cout << players[currentPlayer].getName() << "'s new location is " << players[currentPlayer].getPlace() << endl;
-				cout << "Question category is " << currentCategory() << endl;
-				askQuestion();
+				cout << "Question category is " << gameTable[players[currentPlayer].getPlace()] << endl;
+				askQuestion(gameTable[players[currentPlayer].getPlace()]);
 				if(players[currentPlayer].answer() == 7){
 					cout << "Answer was incorrect!" << endl;
 					cout << players[currentPlayer].getName() + " was sent to the penalty box" << endl;
@@ -85,46 +85,21 @@ int Game::howManyPlayers(){
 	return players.size();
 }
 
-void Game::askQuestion()
+void Game::askQuestion(string place)
 {
-	if (currentCategory() == "Pop"){
+	if (place == "Pop"){
 		cout << popQuestions.front() << endl;
 		popQuestions.pop_front();
-	}
-	if (currentCategory() == "Science"){
+	} else if (place == "Science"){
 		cout << scienceQuestions.front() << endl;
 		scienceQuestions.pop_front();
-	}
-	if (currentCategory() == "Sports"){
+	} else if (place == "Sports"){
 		cout << sportsQuestions.front() << endl;
 		sportsQuestions.pop_front();
-	}
-	if (currentCategory() == "Rock"){
+	}else if (place == "Rock"){
 		cout << rockQuestions.front() << endl;
 		rockQuestions.pop_front();
 	}
-}
-
-string Game::currentCategory(){
-	if (players[currentPlayer].getPlace() == 0)
-		return "Pop";
-	if (players[currentPlayer].getPlace() == 4)
-		return "Pop";
-	if (players[currentPlayer].getPlace() == 8)
-		return "Pop";
-	if (players[currentPlayer].getPlace() == 1)
-		return "Science";
-	if (players[currentPlayer].getPlace() == 5)
-		return "Science";
-	if (players[currentPlayer].getPlace() == 9)
-		return "Science";
-	if (players[currentPlayer].getPlace() == 2)
-		return "Sports";
-	if (players[currentPlayer].getPlace() == 6)
-		return "Sports";
-	if (players[currentPlayer].getPlace() == 10)
-		return "Sports";
-	return "Rock";
 }
 
 bool Game::didPlayerWin(){
