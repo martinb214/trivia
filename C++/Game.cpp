@@ -16,10 +16,11 @@ Game::Game(){
 		sportsQuestions.push_back("Sports Question " + j);
 		rockQuestions.push_back("Rock Question " + j);
 	}
+	
 	srand(time(NULL));
 }
 
-void Game::add(string playerName){
+void Game::addPlayer(string playerName){
 	players.push_back(Player(playerName));
 
 	cout << playerName << " was added" << endl;
@@ -40,29 +41,31 @@ void Game::playGame(){
 					players[currentPlayer].setInPenaltyBox();
 					cout << players[currentPlayer].getName() << " is getting out of the penalty box" << endl;
 				}
+				
 				players[currentPlayer].setPlace(players[currentPlayer].getPlace() + roll);
 				cout << players[currentPlayer].getName() << "'s new location is " << players[currentPlayer].getPlace() << endl;
 				cout << "Question category is " << gameTable[players[currentPlayer].getPlace()] << endl;
+				
 				askQuestion(gameTable[players[currentPlayer].getPlace()]);
+				
 				if(players[currentPlayer].answer() == 7){
 					cout << "Answer was incorrect!" << endl;
 					cout << players[currentPlayer].getName() + " was sent to the penalty box" << endl;
 					players[currentPlayer].setInPenaltyBox();
 				}else{
-					cout << "Answer was corrent!" << endl;
+					cout << "Answer was correct!" << endl;
 					players[currentPlayer].setPurse();
 					cout << players[currentPlayer].getName() << " now has " << players[currentPlayer].getPurse() << " Gold Coins" << endl;
-					hasWinner = didPlayerWin();
+					if(players[currentPlayer].getPurse() == 6){
+						hasWinner = true;
+						cout << players[currentPlayer].getName() << " has won the game" << endl;
+					}
 				}
 			}
 
 			currentPlayer++;
 			if (currentPlayer == players.size()) currentPlayer = 0;
 		}
-		if(currentPlayer != 0)
-			cout << players[currentPlayer-1].getName() << " has won the game" << endl;
-		else
-			cout << players[players.size()-1].getName() << " has won the game" << endl;
 	}else{
 		cout << "Not enough player to start the game!" << endl;
 	}
@@ -83,8 +86,4 @@ void Game::askQuestion(string place)
 		cout << rockQuestions.front() << endl;
 		rockQuestions.pop_front();
 	}
-}
-
-bool Game::didPlayerWin(){
-	return (players[currentPlayer].getPurse() == 6);
 }

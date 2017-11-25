@@ -9,27 +9,26 @@
 
 class Game{
   private:
-	std::vector<Player> players;
-	int currentPlayer;
-	bool hasWinner;
+		std::vector<Player> players;
+		int currentPlayer;
+		bool hasWinner;
 
-	const std::string gameTable[12] = {"Pop", "Science", "Sports", "Rock",
-									   "Pop", "Science", "Sports", "Rock",
-									   "Pop", "Science", "Sports", "Rock"};
+		const std::string gameTable[12] = {"Pop", "Science", "Sports", "Rock",
+																			 "Pop", "Science", "Sports", "Rock",
+																			 "Pop", "Science", "Sports", "Rock"};
 
-	std::list<std::string> popQuestions;
-	std::list<std::string> scienceQuestions;
-	std::list<std::string> sportsQuestions;
-	std::list<std::string> rockQuestions;
+		std::list<std::string> popQuestions;
+		std::list<std::string> scienceQuestions;
+		std::list<std::string> sportsQuestions;
+		std::list<std::string> rockQuestions;
 
-	void askQuestion(std::string place);
-	bool didPlayerWin();
+		void askQuestion(std::string place);
 
-  public:
-	Game();
+	public:
+		Game();
 
-	void add(std::string playerName);
-	void playGame();
+		void addPlayer(std::string playerName);
+		void playGame();
 };
 
 #endif /* GAME_H_ */

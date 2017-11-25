@@ -6,9 +6,9 @@ int main(){
 	//Waiting: Normal execute without error
 	Game aGame;
 
-	aGame.add("Chet");
-	aGame.add("Pat");
-	aGame.add("Sue");
+	aGame.addPlayer("Chet");
+	aGame.addPlayer("Pat");
+	aGame.addPlayer("Sue");
 
 	aGame.playGame();
 
@@ -17,7 +17,7 @@ int main(){
 	/*
 	Game bGame;
 
-	bGame.add("Bob");
+	bGame.addPlayer("Bob");
 
 	bGame.playGame();
 	*/
